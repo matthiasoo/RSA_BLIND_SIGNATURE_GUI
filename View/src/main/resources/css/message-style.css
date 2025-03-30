@@ -1,0 +1,29 @@
+.anchor {
+    -fx-background-color: #330016;
+    -fx-background-radius: 12px;
+    -fx-border-width: 2px;
+    -fx-border-color: #ffc400;
+    -fx-border-radius: 12px;
+}
+
+.cm {
+    -fx-background-color: transparent;
+}
+
+.title-bar {
+    -fx-background-color: #24000f;
+    -fx-background-radius: 12px 12px 0 0;
+}
+
+#title {
+    -fx-font-family: "SF Pro Display", Serif;
+    -fx-text-fill: #ffc400;
+    -fx-font-weight: 700;
+}
+
+#messageLabel {
+    -fx-font-family: "SF Pro Display", Serif;
+    -fx-text-fill: #ffc400;
+    -fx-font-weight: 700;
+
+}

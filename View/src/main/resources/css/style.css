@@ -1,0 +1,111 @@
+.anchor {
+    -fx-background-color: #330016;
+    -fx-background-radius: 12px;
+}
+
+.cm {
+    -fx-background-color: transparent;
+}
+
+.title-bar {
+    -fx-background-color: #24000f;
+    -fx-background-radius: 12px 12px 0 0;
+}
+
+#title {
+    -fx-font-family: "SF Pro Display", Serif;
+    -fx-text-fill: #ffc400;
+    -fx-font-weight: 700;
+}
+
+.text-field {
+    -fx-background-color: #24000f;
+    -fx-background-radius: 12px;
+    -fx-font-family: "SF Pro Display", Serif;
+    -fx-text-fill: #ffc400;
+    -fx-prompt-text-fill: rgba(255, 196, 0, 0.5);
+    /*-fx-border-color: #ffc400;*/
+    /*-fx-border-width: 0.7px;*/
+    -fx-border-radius: 12px;
+}
+
+.label {
+    -fx-font-family: "SF Pro Display", Serif;
+    -fx-text-fill: #ffc400;
+    -fx-font-weight: 700;
+}
+
+.header_label {
+    -fx-font-family: "SF Pro Display", Serif;
+    -fx-text-fill: #ffc400;
+    -fx-font-weight: 700;
+    -fx-font-size: 30px;
+    -fx-border-color: #ffc400;
+    -fx-border-width: 0 0 2px 0;
+}
+
+.button-inside {
+    /*-fx-background-color: #ffc400;*/
+    -fx-background-color: #24000f;
+    -fx-background-radius: 12px;
+    /*-fx-text-fill: #182636;*/
+    -fx-text-fill: #ffc400;
+    -fx-border-color: #ffc400;
+    -fx-border-width: 0.7px;
+    -fx-border-radius: 12px;
+}
+
+.button-inside:hover {
+    -fx-background-color: #45001e;
+}
+
+.text-area {
+    -fx-background-color: #24000f;
+    -fx-background-radius: 12px;
+    -fx-font-family: "SF Pro Display", Serif;
+    -fx-text-fill: #ffc400;
+    -fx-prompt-text-fill: rgba(255, 196, 0, 0.5);
+    /*-fx-border-color: #ffc400;*/
+    /*-fx-border-width: 0.7px;*/
+    -fx-border-radius: 12px;
+}
+
+.text-area .content {
+    -fx-background-color: transparent;
+}
+
+.text-area:focused {
+    /*-fx-border-color: #ffcc00;*/
+}
+
+.text-area .scroll-pane {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.text-area .scroll-pane .viewport {
+    -fx-background-color: transparent;
+}
+
+.text-area .scroll-bar {
+    -fx-opacity: 0;
+}
+
+.check-box {
+    -fx-text-fill: #ffc400;
+}
+
+.check-box .box {
+    -fx-background-color: #24000f;
+    -fx-border-color: #ffc400;
+    -fx-border-radius: 6px;
+}
+
+.check-box:selected .mark {
+    -fx-background-color: #ffc400;
+}
+
+.check-box .box:hover {
+    -fx-background-color: #45001e;
+    -fx-background-radius: 6px;
+}
