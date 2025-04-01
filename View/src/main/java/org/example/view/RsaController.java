@@ -9,9 +9,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import org.example.model.*;
 
 import java.io.File;
 import java.io.IOException;
+import java.math.BigInteger;
 import java.nio.file.Files;
 import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
@@ -59,6 +61,8 @@ public class RsaController {
     private double xxCord = 0;
     private double yyCord = 0;
 
+    private RSA rsa;
+
     @FXML
     void close(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -91,12 +95,21 @@ public class RsaController {
 
     @FXML
     void sign(ActionEvent event) {
-
+        String str=this.messageTextArea.getText();
+        BigInteger bi=rsa.podpisujSlepo(str);
+        this.signatureTextArea.setText(bi.toString(16));
     }
 
     @FXML
     void verify(ActionEvent event) {
-
+        String tekst_jawny=this.messageTextArea.getText();
+        String podpis=this.signatureTextArea.getText();
+        boolean state=this.rsa.weryfikujStringSlepo(tekst_jawny,podpis);
+        try {
+            MessageWindow.infoMessageWindow("Verify: "+state);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @FXML
@@ -106,7 +119,11 @@ public class RsaController {
 
     @FXML
     void generateKeys(ActionEvent event) {
-
+        this.rsa=new RSA();
+        this.keyKField.setText(this.rsa.getK().toString(16));
+        this.keyEField.setText(this.rsa.getE().toString(16));
+        this.keyGField.setText(this.rsa.getD().toString(16));
+        this.keyModNField.setText(this.rsa.getKm1().toString(16));
     }
 
     @FXML
@@ -127,10 +144,6 @@ public class RsaController {
     @FXML
     void saveKeyToFile(ActionEvent event) throws IOException {
 
-    }
-
-    private String generateKey() {
-        return "A";
     }
 
     private void setTextArea(TextArea ta, String str) {

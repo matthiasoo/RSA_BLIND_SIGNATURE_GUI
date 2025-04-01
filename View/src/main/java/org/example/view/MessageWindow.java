@@ -28,6 +28,24 @@ public class MessageWindow {
         stage.show();
     }
 
+    static void infoMessageWindow(String errorMessage) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(MessageWindow.class.getResource("/message-layout.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 500, 350);
+        scene.setFill(Color.TRANSPARENT);
+
+        MessageWindowController controller = fxmlLoader.getController();
+        controller.setTitle("Info");
+        controller.setMessage(errorMessage);
+        controller.getMessageLabel().setStyle("-fx-text-fill: yellow;");
+
+        Stage stage = new Stage();
+        stage.initStyle(StageStyle.TRANSPARENT);
+        Image icon = new Image("icons/error_icon.png");
+        stage.getIcons().add(icon);
+        stage.setScene(scene);
+        stage.show();
+    }
+
     static void authorsWindow() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(MessageWindow.class.getResource("/message-layout.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 500, 350);

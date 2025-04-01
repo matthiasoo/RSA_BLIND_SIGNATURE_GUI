@@ -14,7 +14,7 @@
 
     <dependencies>
         <dependency>
-            <groupId>pl.crypto</groupId>
+            <groupId>pl.rsa</groupId>
             <artifactId>ModelProject</artifactId>
             <version>2.0-SNAPSHOT</version>
             <scope>compile</scope>
