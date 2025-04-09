@@ -6,27 +6,40 @@ import java.math.BigInteger;
 import java.security.*;
 
 public class RSA {
-    BigInteger p, q, N, e, d, euler, pm1, qm1, k, km1, S;
+    BigInteger p, q, N, e, d, euler, k, km1, S;
     MessageDigest digest;
-    int keyLen = 256; //ta wartość daje długość d=512
+    int keyLen = 256;
 
     public RSA() {
         generateKey();
         try {
             digest = MessageDigest.getInstance("SHA-256");
         } catch (NoSuchAlgorithmException ex) {
-            ex.printStackTrace();
+            throw new RSAException("Can't find SHA-256 algorithm");
         }
     }
 
+    public RSA(BigInteger e, BigInteger d, BigInteger k, BigInteger N) {
+        //TODO: verification needed or we can assume that e,d,k,N already satisfies our requirements
+        this.e = e;
+        this.d = d;
+        this.N = N;
+
+        this.k = k;
+        this.km1 = k.modInverse(N);
+
+        try {
+            digest = MessageDigest.getInstance("SHA-256");
+        } catch (NoSuchAlgorithmException ex) {
+            throw new RSAException("Can't find SHA-256 algorithm");
+        }
+    }
 
     public void generateKey() {
         p = BigInteger.probablePrime(keyLen, new Random());
         q = BigInteger.probablePrime(keyLen, new Random());
         N = p.multiply(q);
-        pm1 = p.subtract(BigInteger.ONE);
-        qm1 = q.subtract(BigInteger.ONE);
-        euler = pm1.multiply(qm1);
+        euler = p.subtract(BigInteger.ONE).multiply(q.subtract(BigInteger.ONE));
         e = BigInteger.probablePrime(keyLen, new Random());
         while (true)
             if (e.gcd(euler).equals(BigInteger.ONE)) break;
@@ -52,8 +65,8 @@ public class RSA {
         return d;
     }
 
-    public BigInteger getKm1() {
-        return km1;
+    public BigInteger getN() {
+        return N;
     }
 
     public BigInteger[] encrypt(byte[] message) {
@@ -199,4 +212,4 @@ public class RSA {
     }
 
 
-}//klasa RSA
+}

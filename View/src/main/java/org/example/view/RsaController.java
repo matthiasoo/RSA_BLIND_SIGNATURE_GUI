@@ -95,6 +95,7 @@ public class RsaController {
 
     @FXML
     void sign(ActionEvent event) {
+        updateKeys();
         String str=this.messageTextArea.getText();
         BigInteger bi=rsa.podpisujSlepo(str);
         this.signatureTextArea.setText(bi.toString(16));
@@ -102,6 +103,7 @@ public class RsaController {
 
     @FXML
     void verify(ActionEvent event) {
+        updateKeys();
         String tekst_jawny=this.messageTextArea.getText();
         String podpis=this.signatureTextArea.getText();
         boolean state=this.rsa.weryfikujStringSlepo(tekst_jawny,podpis);
@@ -117,13 +119,23 @@ public class RsaController {
 
     }
 
+    void updateKeys(){
+        this.rsa=new RSA(
+                new BigInteger(this.keyEField.getText(),16),
+                new BigInteger(this.keyGField.getText(),16),
+                new BigInteger(this.keyKField.getText(),16),
+                new BigInteger(this.keyModNField.getText(),16)
+        );
+
+    }
+
     @FXML
     void generateKeys(ActionEvent event) {
         this.rsa=new RSA();
         this.keyKField.setText(this.rsa.getK().toString(16));
         this.keyEField.setText(this.rsa.getE().toString(16));
         this.keyGField.setText(this.rsa.getD().toString(16));
-        this.keyModNField.setText(this.rsa.getKm1().toString(16));
+        this.keyModNField.setText(this.rsa.getN().toString(16));
     }
 
     @FXML
