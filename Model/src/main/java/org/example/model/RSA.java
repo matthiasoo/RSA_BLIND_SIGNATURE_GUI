@@ -6,7 +6,7 @@ import java.math.BigInteger;
 import java.security.*;
 
 public class RSA {
-    BigInteger p, q, N, e, d, euler, k, km1, S;
+    BigInteger p, q, N, e, d, euler, k, km1;
     MessageDigest digest;
     int keyLen = 256;
 
@@ -172,7 +172,7 @@ public class RSA {
         BigInteger podpis = new BigInteger(1, digest.digest());
         podpis = podpis.multiply(k.modPow(e, N)).mod(N);
         podpis = podpis.modPow(d, N);
-        S = podpis;
+        //S = podpis;
         podpis = podpis.multiply(km1).mod(N);
         return podpis;
     }
@@ -182,7 +182,7 @@ public class RSA {
         BigInteger podpis = new BigInteger(1, digest.digest());
         podpis = podpis.multiply(k.modPow(e, N)).mod(N);
         podpis = podpis.modPow(d, N);
-        S = podpis;
+        //S = podpis;
         podpis = podpis.multiply(km1).mod(N);
         return podpis;
     }
@@ -212,4 +212,20 @@ public class RSA {
     }
 
 
+    //zamiana tablicy bajtów na ich reprezentację heksadecymalną
+    public static String bytesToHexString(byte[] src) {
+        StringBuilder stringBuilder = new StringBuilder();
+        if (src == null || src.length <= 0) {
+            return "";
+        }
+        for (int i = 0; i < src.length; i++) {
+            int v = src[i] & 0xFF;
+            String hv = Integer.toHexString(v);
+            if (hv.length() < 2) {
+                stringBuilder.append(0);
+            }
+            stringBuilder.append(hv);
+        }
+        return stringBuilder.toString();
+    }
 }
