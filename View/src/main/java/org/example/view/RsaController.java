@@ -136,7 +136,7 @@ public class RsaController {
         this.signatureBytes = podpis.getBytes();
         boolean state=this.rsa.weryfikujStringSlepo(tekst_jawny,podpis);
         try {
-            MessageWindow.infoMessageWindow("Verify: "+state);
+            MessageWindow.infoMessageWindow("Verify: "+state,state);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

@@ -28,7 +28,7 @@ public class MessageWindow {
         stage.show();
     }
 
-    static void infoMessageWindow(String errorMessage) throws IOException {
+    static void infoMessageWindow(String errorMessage, boolean state) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(MessageWindow.class.getResource("/message-layout.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 500, 350);
         scene.setFill(Color.TRANSPARENT);
@@ -36,7 +36,7 @@ public class MessageWindow {
         MessageWindowController controller = fxmlLoader.getController();
         controller.setTitle("Info");
         controller.setMessage(errorMessage);
-        controller.getMessageLabel().setStyle("-fx-text-fill: yellow;");
+        controller.getMessageLabel().setStyle("-fx-text-fill:"+(state?"#00ff00":"red")+";");
 
         Stage stage = new Stage();
         stage.initStyle(StageStyle.TRANSPARENT);
