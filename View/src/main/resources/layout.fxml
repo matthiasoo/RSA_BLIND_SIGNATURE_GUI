@@ -61,14 +61,14 @@
                   <Insets bottom="25.0" />
                </VBox.margin>
             </Label>
-            <Label text="Public exponent (e)" />
+            <Label text="Public key (e)" />
             <TextField fx:id="keyEField" alignment="CENTER" promptText="Enter key" styleClass="text-field">
                <VBox.margin>
                   <Insets bottom="30.0" top="5.0" />
                </VBox.margin>
             </TextField>
-            <Label text="Private key (g)" />
-            <TextField fx:id="keyGField" alignment="CENTER" layoutX="30.0" layoutY="266.0" promptText="Enter key" styleClass="text-field">
+            <Label text="Private key (d)" />
+            <TextField fx:id="keyDField" alignment="CENTER" layoutX="30.0" layoutY="266.0" promptText="Enter key" styleClass="text-field">
                <VBox.margin>
                   <Insets bottom="30.0" top="5.0" />
                </VBox.margin>

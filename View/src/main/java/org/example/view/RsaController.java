@@ -27,7 +27,7 @@ public class RsaController {
     private TextField keyEField;
 
     @FXML
-    private TextField keyGField;
+    private TextField keyDField;
 
     @FXML
     private TextField keyKField;
@@ -177,13 +177,13 @@ public class RsaController {
             return;
         }
 
-        str=this.keyGField.getText();
+        str=this.keyDField.getText();
         if(str==null || str.isEmpty()){
-            MessageWindow.errorMessageWindow("Empty G key");
+            MessageWindow.errorMessageWindow("Empty D key");
             return;
         }
         if(!testKey(str)){
-            MessageWindow.errorMessageWindow("G key wrong format");
+            MessageWindow.errorMessageWindow("D key wrong format");
             return;
         }
 
@@ -209,7 +209,7 @@ public class RsaController {
 
         this.rsa=new RSA(
                 new BigInteger(this.keyEField.getText(),16),
-                new BigInteger(this.keyGField.getText(),16),
+                new BigInteger(this.keyDField.getText(),16),
                 new BigInteger(this.keyKField.getText(),16),
                 new BigInteger(this.keyModNField.getText(),16)
         );
@@ -221,7 +221,7 @@ public class RsaController {
         this.rsa=new RSA();
         this.keyKField.setText(this.rsa.getK().toString(16));
         this.keyEField.setText(this.rsa.getE().toString(16));
-        this.keyGField.setText(this.rsa.getD().toString(16));
+        this.keyDField.setText(this.rsa.getD().toString(16));
         this.keyModNField.setText(this.rsa.getN().toString(16));
     }
 
@@ -297,7 +297,7 @@ public class RsaController {
                 }
 
                 keyEField.setText(keys.get(0));
-                keyGField.setText(keys.get(1));
+                keyDField.setText(keys.get(1));
                 keyKField.setText(keys.get(2));
                 keyModNField.setText(keys.get(3));
             } catch (IOException e) {
@@ -318,7 +318,7 @@ public class RsaController {
                 List<String> keys = new ArrayList<>();
 
                 keys.add(keyEField.getText());
-                keys.add(keyGField.getText());
+                keys.add(keyDField.getText());
                 keys.add(keyKField.getText());
                 keys.add(keyModNField.getText());
 
