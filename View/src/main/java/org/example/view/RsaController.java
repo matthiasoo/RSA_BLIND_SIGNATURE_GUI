@@ -145,7 +145,6 @@ public class RsaController {
     @FXML
     void fileChecker(ActionEvent event) {
         messageTextArea.setEditable(fileCheck);
-        //signatureTextArea.setEditable(fileCheck);
 
         this.messageBytes = new byte[]{};
         setTextArea(messageTextArea, RSA.bytesToHexString(this.messageBytes));
@@ -156,15 +155,14 @@ public class RsaController {
     }
 
     //sprawdzenie czy klucz jest poprawny
-    private boolean testKey(String key) {
+    private boolean checkKey(String key) {
         String regex = "^[0-9a-fA-F]+$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(key);
-        return matcher.matches();
+        return !matcher.matches();
     }
 
     void updateKeys() throws IOException{
-        //TODO write better code
         String str;
 
         str=this.keyEField.getText();
@@ -172,7 +170,7 @@ public class RsaController {
             MessageWindow.errorMessageWindow("Empty E key");
             return;
         }
-        if(!testKey(str)){
+        if(checkKey(str)){
             MessageWindow.errorMessageWindow("E key wrong format");
             return;
         }
@@ -182,7 +180,7 @@ public class RsaController {
             MessageWindow.errorMessageWindow("Empty D key");
             return;
         }
-        if(!testKey(str)){
+        if(checkKey(str)){
             MessageWindow.errorMessageWindow("D key wrong format");
             return;
         }
@@ -192,7 +190,7 @@ public class RsaController {
             MessageWindow.errorMessageWindow("Empty K factor");
             return;
         }
-        if(!testKey(str)){
+        if(checkKey(str)){
             MessageWindow.errorMessageWindow("K factor wrong format");
             return;
         }
@@ -202,7 +200,7 @@ public class RsaController {
             MessageWindow.errorMessageWindow("Empty N");
             return;
         }
-        if(!testKey(str)){
+        if(checkKey(str)){
             MessageWindow.errorMessageWindow("N wrong format");
             return;
         }
